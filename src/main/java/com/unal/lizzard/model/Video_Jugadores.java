@@ -13,10 +13,11 @@ public  class Video_Jugadores extends  Persona {
     private Long id_Videojugador;
     private String nickname;
 
+
     public  Video_Jugadores(String nickname) {
         super();
-
         this.nickname = nickname;
+
     }
     public Video_Jugadores( ) {
 

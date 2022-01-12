@@ -27,11 +27,13 @@ public class Video_JugadoresServiceImpl implements Video_JugadoresService {
     public Video_Jugadores guardar(Video_JugadoresRegistrationDto registrationDto) {
 
         Video_Jugadores video_jugadores = new Video_Jugadores(
-                registrationDto.getCorreo(),
-                registrationDto.getContraseña(),
-                registrationDto.getNickname(),
+
+
+                registrationDto.getNickname()
+
         );
-        return video_jugadoresRepository.guardar(video_jugadores);
+        return video_jugadoresRepository.save(video_jugadores);
+
 
 
 

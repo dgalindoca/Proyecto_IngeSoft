@@ -27,7 +27,7 @@ public class Video_JugadoresRegistrationController {
         return "registration";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping
     public String guardar (@ModelAttribute ("video_Jugadores")Video_JugadoresRegistrationDto registrationDto){
         System.out.println(guardar(registrationDto));
         System.out.println(registrationDto);
