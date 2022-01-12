@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <title>Registro Usuario</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:href="@{/}">Módulo de registro e inicio de sesión</a>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">Te has registrado en la aplicación!!</div>
+                </div>
+                <h1>Registro</h1>
+                <form th:action="@{/guardar}" method="post" th:object="${video_Jugadores}">
+                    <div class="form-group">
+                        <label class="control-label" for="id_persona">Documento</label>
+                        <input id="id_persona" class="form-control" th:field="*{id_persona}" required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="correo">Apellidos</label>
+                        <input id="correo" class="form-control" th:field="*{correo}" required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="contraseña">Contraseña</label>
+                        <input id="contraseña" class="form-control" th:field="*{contraseña}" required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="nickname">Nickname</label>
+                        <input id="nickname" class="form-control" th:field="*{nickname}" required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Registrar</button>
+                        <span>Ya está registrado? <a href="/" th:href="@{/login}">Ingresar</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
