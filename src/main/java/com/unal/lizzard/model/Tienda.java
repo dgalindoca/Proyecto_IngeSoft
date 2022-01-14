@@ -19,6 +19,7 @@ public class Tienda {
             joinColumns = @JoinColumn(name = "tienda_id", referencedColumnName = "id_tienda"),
             inverseJoinColumns =@JoinColumn(name = "juego_id",referencedColumnName ="id_Juego")
     )
+
     private Collection<Juego> juego;
 
     public Tienda() {
@@ -61,4 +62,6 @@ public class Tienda {
     public void setJuego(Collection<Juego> juego) {
         this.juego = juego;
     }
+
+
 }

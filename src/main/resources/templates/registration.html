@@ -29,24 +29,24 @@
                     <div class="alert alert-info">Te has registrado en la aplicación!!</div>
                 </div>
                 <h1>Registro</h1>
-                <form th:action="@{/registration}" method="post" th:object="${video_Jugadores}">
-                    <div class="form-group">
-                        <label class="control-label" for="id_persona">Documento</label>
-                        <input id="id_persona" class="form-control" th:field="*{id_persona}" required autofocus="autofocus"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="correo">Apellidos</label>
-                        <input id="correo" class="form-control" th:field="*{correo}" required autofocus="autofocus"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="contraseña">Contraseña</label>
-                        <input id="contraseña" class="form-control" th:field="*{contraseña}" required autofocus="autofocus"/>
-                    </div>
+                <form th:action="@{/registration}" method="post" th:object="${user}">
+
+
 
                     <div class="form-group">
-                        <label class="control-label" for="nickname">Nickname</label>
-                        <input id="nickname" class="form-control" th:field="*{nickname}" required autofocus="autofocus"/>
+                        <label class="control-label" for="username">User Name</label>
+                        <input id="username" class="form-control" th:field="*{username}" required autofocus="autofocus"/>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label" for="role">role</label>
+                        <input id="role" class="form-control" th:field="*{role}" required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input id="password" class="form-control" th:field="*{password}" required autofocus="autofocus"/>
+                    </div>
+
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Registrar</button>
                         <span>Ya está registrado? <a href="/" th:href="@{/login}">Ingresar</a></span>

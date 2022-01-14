@@ -9,21 +9,19 @@ public class Juego {
     private long id_Juego;
     @Column(name = "Nombre_Juego")
     private String  Nombre_Juego;
-    private String correo;
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Administradores administradores;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Video_Jugadores video_jugadores;
+    private User user;
+
+
 
 
     public Juego() {
     }
 
-    public Juego(String nombre_Juego, String correo, Persona persona, Video_Jugadores video_jugadores) {
-        Nombre_Juego = nombre_Juego;
-        this.correo = correo;
-        this.video_jugadores = video_jugadores;
-        this.administradores = administradores;
+    public Juego(String nombre_Juego, User user) {
+        this.Nombre_Juego = nombre_Juego;
+
+        this.user = user;
     }
 
     public long getId_Juego() {
@@ -34,8 +32,6 @@ public class Juego {
         this.id_Juego = id_Juego;
     }
 
-
-
     public String getNombre_Juego() {
         return Nombre_Juego;
     }
@@ -44,11 +40,15 @@ public class Juego {
         Nombre_Juego = nombre_Juego;
     }
 
-    public String getCorreo() {
-        return correo;
+
+
+    public User getUser() {
+        return user;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+
 }
