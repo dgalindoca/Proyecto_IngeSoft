@@ -1,32 +1,18 @@
-package com.unal.lizzard.model;
-import javax.persistence.*;
+package com.unal.lizzard.web;
 
-@Entity
-@Table (name = "Juego")
-public class Juego {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Juego;
-    @Column(name = "Nombre_Juego")
+
+public class GameRegistrationDto {
     private String  nombre_Juego;
     private String  nombre_tienda;
     private String URL;
+    public GameRegistrationDto() {
 
-    public Juego() {
     }
-    public Juego(String nombre_Juego, String nombre_tienda, String URL) {
+
+    public GameRegistrationDto(String nombre_Juego, String nombre_tienda, String URL) {
         this.nombre_Juego = nombre_Juego;
         this.nombre_tienda = nombre_tienda;
         this.URL = URL;
-    }
-
-
-    public Long getId_Juego() {
-        return id_Juego;
-    }
-
-    public void setId_Juego(Long id_Juego) {
-        this.id_Juego = id_Juego;
     }
 
     public String getNombre_Juego() {

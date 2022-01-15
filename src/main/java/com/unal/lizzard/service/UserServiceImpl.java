@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
                 registrationDto.getEmail(),
                 registrationDto.getPassword(),
                 registrationDto.getRole()
-
         );
         return userRepository.save(user);
     }
