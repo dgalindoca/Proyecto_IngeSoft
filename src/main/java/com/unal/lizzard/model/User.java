@@ -4,6 +4,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "user", uniqueConstraints =  @UniqueConstraint(columnNames = "email"))
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,9 @@ public class User {
     private String email;
     private String password;
     private String role;
+
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email, String password, String role) {
         super();

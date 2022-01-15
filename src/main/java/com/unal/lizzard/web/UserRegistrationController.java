@@ -1,5 +1,6 @@
 package com.unal.lizzard.web;
 
+import com.unal.lizzard.model.User;
 import com.unal.lizzard.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
