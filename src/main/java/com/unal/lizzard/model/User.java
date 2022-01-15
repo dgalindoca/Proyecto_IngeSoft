@@ -1,42 +1,63 @@
 package com.unal.lizzard.model;
-
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-
-
+@Table(name = "user", uniqueConstraints =  @UniqueConstraint(columnNames = "email"))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String username;
+    private Long id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    private String email;
     private String password;
-    private String  role;
+    private String role;
 
-    public User() {
-    }
-
-    public User(String username, String password, String role) {
+    public User(String firstName, String lastName, String email, String password, String role) {
         super();
-        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
         this.password = password;
         this.role = role;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -55,5 +76,4 @@ public class User {
         this.role = role;
     }
 }
-
 
