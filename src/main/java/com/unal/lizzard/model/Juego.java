@@ -11,7 +11,7 @@ public class Juego {
     private String  nombre_Juego;
     private String  nombre_tienda;
     private String URL;
-
+    //prueba
     public Juego() {
     }
     public Juego(String nombre_Juego, String nombre_tienda, String URL) {
