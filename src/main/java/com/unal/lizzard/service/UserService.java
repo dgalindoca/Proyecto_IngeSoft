@@ -5,4 +5,5 @@ import com.unal.lizzard.web.UserRegistrationDto;
 
 public interface UserService {
     User save(UserRegistrationDto registrationDto);
+    User encontrarPersona(User registrationDto);
 }

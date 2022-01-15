@@ -26,4 +26,11 @@ public class UserServiceImpl implements UserService {
         );
         return userRepository.save(user);
     }
+
+
+    @Override
+
+    public User encontrarPersona(User registrationDto) {
+        return userRepository.findById(registrationDto.getId()).orElse(null);
+    }
 }

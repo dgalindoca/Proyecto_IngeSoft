@@ -3,6 +3,7 @@ package com.unal.lizzard.web;
 import com.unal.lizzard.model.User;
 import com.unal.lizzard.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,5 +33,12 @@ public class UserRegistrationController {
     public String registerUserAccount(@ModelAttribute("user")UserRegistrationDto registrationDto) {
         userService.save(registrationDto);
         return "redirect:/registration?success";
+    }
+    @GetMapping("/editar/{idPersona}")
+    public String editar(User user, Model model){
+        user = userService.encontrarPersona(user);
+        System.out.println(user);
+        model.addAttribute("user", user);
+        return "modificar";
     }
 }
