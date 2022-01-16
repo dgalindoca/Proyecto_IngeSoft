@@ -11,6 +11,9 @@ public class Juego {
     private String  nombre_Juego;
     private String  nombre_tienda;
     private String URL;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private User user;
+
 
     public Juego() {
     }
