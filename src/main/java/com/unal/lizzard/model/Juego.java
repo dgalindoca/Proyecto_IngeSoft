@@ -11,17 +11,17 @@ public class Juego {
     private String  Nombre_Juego;
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
-
-
-
+    private int precio;
 
     public Juego() {
     }
 
-    public Juego(String nombre_Juego, User user) {
+    public Juego(String nombre_Juego, User user, int precio) {
         this.Nombre_Juego = nombre_Juego;
 
         this.user = user;
+
+        this.precio = precio;
     }
 
     public long getId_Juego() {
@@ -40,7 +40,13 @@ public class Juego {
         Nombre_Juego = nombre_Juego;
     }
 
+    public int getPrecio() {
+        return precio;
+    }
 
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
 
     public User getUser() {
         return user;

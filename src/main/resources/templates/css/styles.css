@@ -1209,6 +1209,33 @@ progress {
     width: 100%;
   }
 
+  .col-filter {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .filter-options a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 15px;
+  }
+
+  .filter-options{
+    background-color: gray;
+    width: 185px;
+    display: none;
+  }
+
+  .filter-menu:hover .filter-options{
+    display:block;
+  }
+
+  .filter-menu{
+    position: absolute;
+    margin: 68%;
+  }
+
   .offset-md-0 {
     margin-left: 0;
   }
