@@ -113,11 +113,11 @@
 
             <input class="form-control" list="games" id="exampleDataList" placeholder="Type to search...">
             <datalist id="games">
-                <option value="San Francisco">
-                <option value="New York">
-                <option value="Seattle">
-                <option value="Los Angeles">
-                <option value="Chicago">
+                <option value="Valorant">
+                <option value="God of War Ragnarok">
+                <option value="Gears of War">
+                <option value="Fortnite">
+                <option value="League of Legends">
             </datalist>
         </div>
         <div class="col-md-1">
@@ -138,19 +138,25 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Tienda</th>
                         <th scope="col">Url</th>
+                        <th scope="col">Editar</th>
                         <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="jg:${juegos}">
                         <th style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_Juego}"></th>
-                        <th style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_tienda}"></th>
-                        <th style="color: #FFF !Important"; scope="row" th:text="${jg.URL}"></th>
-                        <th>
+                        <td style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_tienda}"></td>
+                        <td style="color: #FFF !Important"; scope="row" th:text="${jg.URL}"></td>
+                        <td>
+                            <a class="btn btn-success btn-sm" th:href="@{/edit/} + ${jg.id_Juego}"
+                               th:text="'Editar'" title="Editar">
+                            </a>
+                        </td>
+                        <td>
                             <a class="btn btn-danger btn-sm" th:href="@{/delete/} + ${jg.id_Juego}"
                                th:text="'Eliminar'" title="Eliminar">
                             </a>
-                        </th>
+                        </td>
                     </tr>
                 </tbody>
             </table>
