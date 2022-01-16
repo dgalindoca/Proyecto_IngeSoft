@@ -1,5 +1,6 @@
 package com.unal.lizzard.model;
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table (name = "Juego")
@@ -11,8 +12,20 @@ public class Juego {
     private String  nombre_Juego;
     private String  nombre_tienda;
     private String URL;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    /*@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
+*/
+/*
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "biblioteca_juegos",
+            joinColumns = @JoinColumn(name = "juego_id", referencedColumnName = "id_Juego"),
+            inverseJoinColumns =@JoinColumn(name = "User_id",referencedColumnName ="id")
+    )
+    private Collection<Juego> juego;
+
+ */
+
+
 
 
     public Juego() {

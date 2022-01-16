@@ -21,13 +21,6 @@ public class User {
 
     private String email;
     private String password;
-    /*
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "biblioteca_juegos",
-            joinColumns = @JoinColumn(name = "User_id", referencedColumnName = "id"),
-            inverseJoinColumns =@JoinColumn(name = "juego_id",referencedColumnName ="id_Juego")
-    )
-    private Collection<Juego> juego;*/
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
