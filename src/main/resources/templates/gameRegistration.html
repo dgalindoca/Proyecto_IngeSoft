@@ -37,6 +37,7 @@
 
             <form th:action="@{/gameRegistration}" method="post" th:object="${game}">
                 <div class="form-group">
+                    <!--<input type="hidden" th:field="*{id_Juego}"}>-->
                     <label for="nombre_Juego" class="control-label">Nombre del juego</label>
                     <input id="nombre_Juego" class="form-control" th:field="*{nombre_Juego}" required autofocus="autofocus">
                 </div>

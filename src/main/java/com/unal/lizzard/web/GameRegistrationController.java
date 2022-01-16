@@ -1,11 +1,12 @@
 package com.unal.lizzard.web;
 
+import com.unal.lizzard.model.Juego;
 import com.unal.lizzard.service.GameService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/gameRegistration")
@@ -32,5 +33,6 @@ public class GameRegistrationController {
         gameService.guardar(gameRegistrationDto);
         return "redirect:/gameRegistration?success";
     }
+
 
 }

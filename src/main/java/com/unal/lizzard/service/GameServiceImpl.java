@@ -40,4 +40,9 @@ public class GameServiceImpl implements GameService {
         gameRepository.deleteById(id);
     }
 
+    @Override
+    public Juego buscarPorId(Long id) {
+        return gameRepository.findById(id).orElse(null);
+    }
+
 }

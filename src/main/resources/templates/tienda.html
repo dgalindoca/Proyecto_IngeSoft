@@ -138,6 +138,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Tienda</th>
                         <th scope="col">Url</th>
+                        <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,6 +146,11 @@
                         <th style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_Juego}"></th>
                         <th style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_tienda}"></th>
                         <th style="color: #FFF !Important"; scope="row" th:text="${jg.URL}"></th>
+                        <th>
+                            <a class="btn btn-danger btn-sm" th:href="@{/delete/} + ${jg.id_Juego}"
+                               th:text="'Eliminar'" title="Eliminar">
+                            </a>
+                        </th>
                     </tr>
                 </tbody>
             </table>

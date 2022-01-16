@@ -7,4 +7,5 @@ public interface GameService {
     Juego guardar(GameRegistrationDto gameRegistrationDto);
     public List<Juego> listarJuegos();
     public void eliminar(Long id);
+    public Juego buscarPorId(Long id);
 }
