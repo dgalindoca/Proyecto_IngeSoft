@@ -1,5 +1,6 @@
 package com.unal.lizzard.model;
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table (name = "Juego")
@@ -11,7 +12,7 @@ public class Juego {
     private String  nombre_Juego;
     private String  nombre_tienda;
     private String URL;
-    //prueba
+
     public Juego() {
     }
     public Juego(String nombre_Juego, String nombre_tienda, String URL) {
