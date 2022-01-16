@@ -4,11 +4,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user", uniqueConstraints =  @UniqueConstraint(columnNames = "email"))
 
-public class User implements UserDetails {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,26 +21,33 @@ public class User implements UserDetails {
 
     private String email;
     private String password;
-    private String role;
+    /*
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "biblioteca_juegos",
             joinColumns = @JoinColumn(name = "User_id", referencedColumnName = "id"),
             inverseJoinColumns =@JoinColumn(name = "juego_id",referencedColumnName ="id_Juego")
     )
+    private Collection<Juego> juego;*/
 
-    private Collection<Juego> juego;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection < Role > roles;
 
     public User() {
     }
 
-    public User(String username, String email, String password, String role) {
-        super();
+    public User(String username, String email, String password, Collection<Role> roles) {
         this.username = username;
-
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
     }
+
 
     public Long getId() {
         return id;
@@ -49,35 +57,14 @@ public class User implements UserDetails {
         this.id = id;
     }
 
+
     public String getUsername() {
         return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
-
-
 
     public String getEmail() {
         return email;
@@ -85,11 +72,6 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
     }
 
     public String getPassword() {
@@ -100,12 +82,12 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 }
 

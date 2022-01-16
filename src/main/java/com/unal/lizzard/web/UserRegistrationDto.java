@@ -1,21 +1,24 @@
 package com.unal.lizzard.web;
 
+import com.unal.lizzard.model.Role;
+
+import java.util.Collection;
+
 public class UserRegistrationDto {
     private String username;
 
     private String email;
     private String password;
-    private String role;
+    private Collection<Role> roles;
     public UserRegistrationDto(){
 
     }
 
-    public UserRegistrationDto(String username, String lastName, String email, String password,String role) {
+    public UserRegistrationDto(String username, String email, String password, Collection<Role> roles) {
         this.username = username;
-
         this.email = email;
         this.password = password;
-        this.role =role;
+        this.roles = roles;
     }
 
     public String getUsername() {
@@ -25,8 +28,6 @@ public class UserRegistrationDto {
     public void setUsername(String username) {
         this.username = username;
     }
-
-
 
     public String getEmail() {
         return email;
@@ -44,12 +45,12 @@ public class UserRegistrationDto {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 }
 
