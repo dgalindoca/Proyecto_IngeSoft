@@ -34,6 +34,7 @@ public class UserRegistrationController {
         userService.save(registrationDto);
         return "redirect:/registration?success";
     }
+    /*
     @GetMapping("/editar/{idPersona}")
     public String editar(User user, Model model){
         user = userService.encontrarPersona(user);
@@ -41,4 +42,6 @@ public class UserRegistrationController {
         model.addAttribute("user", user);
         return "modificar";
     }
+
+     */
 }
