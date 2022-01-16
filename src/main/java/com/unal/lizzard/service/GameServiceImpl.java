@@ -34,4 +34,10 @@ public class GameServiceImpl implements GameService {
     public List<Juego> listarJuegos() {
         return (List<Juego>) gameRepository.findAll();
     }
+
+    @Override
+    public void eliminar(Long id) {
+        gameRepository.deleteById(id);
+    }
+
 }

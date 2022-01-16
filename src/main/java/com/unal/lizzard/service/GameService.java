@@ -6,4 +6,5 @@ import java.util.List;
 public interface GameService {
     Juego guardar(GameRegistrationDto gameRegistrationDto);
     public List<Juego> listarJuegos();
+    public void eliminar(Long id);
 }
