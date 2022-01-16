@@ -15,15 +15,19 @@ public class MainController {
     public String login(){
         return "login";
     }
-    @GetMapping("/")
+    /*@GetMapping("/")
     public String home(){
         return "tienda";
     }
 
-    @GetMapping("/tienda")
+     */
+
+    /*@GetMapping("/tienda")
     public String tienda(){
         return "tienda";
     }
+
+     */
 
     @GetMapping("/registrarion")
     public String registrarse(){
