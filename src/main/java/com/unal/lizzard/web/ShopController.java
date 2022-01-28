@@ -31,6 +31,8 @@ public class ShopController {
        System.out.println("Registro Eliminado con Exito!");
        return "redirect:/";
     }
+    @GetMapping("/biblioteca")
+    public String biblioteca(){return "/biblioteca";}
     @GetMapping("/edit/{id}")
     public String editar(@PathVariable("id")Long id_Juego, Model model){
         Juego juego= gameService.buscarPorId(id_Juego);
