@@ -9,11 +9,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class JuegosCServiceImpl implements JuegosCService{
 
     @Autowired
     private JuegosCRepository juegosCRepository;
+    @Autowired
+    private GameRepository gameRepository;
 
     public JuegosCServiceImpl(JuegosCRepository  juegosCRepository) {
         super();
@@ -28,6 +34,24 @@ public class JuegosCServiceImpl implements JuegosCService{
         return juegosCRepository.save(juego);
     }
 
+    public Juego buscarPorId(Long id){
+        return gameRepository.findById(id).orElse(null);
+    }
+    @Override
+    public List<Juego> listarJuegosC(){
+        ArrayList<JuegosC> juegosComp = (ArrayList<JuegosC>) juegosCRepository.findAll();
+        List<Juego> aux = new ArrayList<>();
+        Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
+        String id_Usuario = usuario.getName();
+
+        for(int i = 0; i < juegosComp.size(); i++){
+            if (juegosComp.get(i).getId_Usuario().equals(id_Usuario)){
+                aux.add(buscarPorId(juegosComp.get(i).getId_Juego()));
+            }
+        }
+        System.out.println(aux);
+        return aux;
+    }
     @Override
     public void eliminar(Long id){
 
