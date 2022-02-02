@@ -2,11 +2,13 @@ package com.unal.lizzard.web;
 
 import com.unal.lizzard.model.Juego;
 import com.unal.lizzard.service.GameService;
+import com.unal.lizzard.service.JuegosCService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -17,6 +19,9 @@ public class ShopController {
 
     @Autowired
     private GameService gameService;
+
+    @Autowired
+    private JuegosCService juegosCService;
 
     @GetMapping("/")
     public String listarJuegos(Model model){
@@ -41,6 +46,10 @@ public class ShopController {
         model.addAttribute("juegos", ListadoJuegos);
 
         return "redirect:/gameRegistration";
-
+    }
+    @GetMapping ("/buy/{id}")
+    public String comprar(@PathVariable("id") Long id_Juego){
+        juegosCService.comprar(id_Juego);
+        return "redirect:/";
     }
 }

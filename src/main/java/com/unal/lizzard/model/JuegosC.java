@@ -12,12 +12,12 @@ public class JuegosC {
     @Column(name = "Juego")
     private Long id_Juego;
     @Column(name = "Usuario")
-    private Long id_Usuario;
+    private String id_Usuario;
 
     public JuegosC() {
     }
 
-    public JuegosC(Long id_Juego, Long id_Usuario) {
+    public JuegosC(Long id_Juego, String id_Usuario) {
         this.id_Juego = id_Juego;
         this.id_Usuario = id_Usuario;
     }
@@ -38,11 +38,11 @@ public class JuegosC {
         this.id_Juego = id_Juego;
     }
 
-    public Long getId_Usuario() {
+    public String getId_Usuario() {
         return id_Usuario;
     }
 
-    public void setId_Usuario(Long id_Usuario) {
+    public void setId_Usuario(String id_Usuario) {
         this.id_Usuario = id_Usuario;
     }
 }

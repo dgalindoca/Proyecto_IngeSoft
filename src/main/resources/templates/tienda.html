@@ -131,6 +131,7 @@
                         <th scope="col">Url</th>
                         <th scope="col">Editar</th>
                         <th scope="col">Eliminar</th>
+                        <th scope="col">Comprar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -139,13 +140,18 @@
                         <td style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_tienda}"></td>
                         <td style="color: #FFF !Important"; scope="row" th:text="${jg.URL}"></td>
                         <td>
-                            <a class="btn btn-success btn-sm" th:href="@{/edit/} + ${jg.id_Juego}"
+                            <a class="btn btn-primary btn-sm" th:href="@{/edit/} + ${jg.id_Juego}"
                                th:text="'Editar'" title="Editar">
                             </a>
                         </td>
                         <td>
                             <a class="btn btn-danger btn-sm" th:href="@{/delete/} + ${jg.id_Juego}"
                                th:text="'Eliminar'" title="Eliminar">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-success btn-sm" th:href="@{/buy/} + ${jg.id_Juego}"
+                               th:text="'Comprar'" title="Comprar">
                             </a>
                         </td>
                     </tr>
