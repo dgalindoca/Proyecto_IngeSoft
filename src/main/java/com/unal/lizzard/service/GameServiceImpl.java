@@ -4,6 +4,8 @@ import com.unal.lizzard.model.Juego;
 import com.unal.lizzard.repository.GameRepository;
 import com.unal.lizzard.web.GameRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public void eliminar(Long id) {
+        //Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
+        //usuario.getName();
         gameRepository.deleteById(id);
     }
 
