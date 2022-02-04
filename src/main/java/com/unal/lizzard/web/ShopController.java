@@ -45,14 +45,11 @@ public class ShopController {
     public String editar(@PathVariable("id_Juego")Long id_Juego, Model model){
 
         Juego juego= gameService.buscarPorId(id_Juego);
-        //List<Juego> ListadoJuegos = gameService.listarJuegos();
+        List<Juego> ListadoJuegos = gameService.listarJuegos();
         model.addAttribute("Titulo","Editar Juego");
         model.addAttribute("juego",juego);
-
         model.addAttribute("juegos", ListadoJuegos);
-
         return "/gameRegistration";
-
     }
 
     /*
