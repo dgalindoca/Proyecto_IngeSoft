@@ -32,7 +32,7 @@ public class LibraryController {
     public String tienda(){return "/";}
 
     @GetMapping("/estado")
-    public String estado(){return "redirect:/estado";}
+    public String estado(){return "/estado";}
 
     @GetMapping ("/biblioteca")
     public String listarJuegosC(Model model){

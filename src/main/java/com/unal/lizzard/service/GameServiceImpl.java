@@ -22,6 +22,7 @@ public class GameServiceImpl implements GameService {
         this.gameRepository = gameRepository;
     }
 
+    /*
     @Override
     public Juego guardar(GameRegistrationDto gameRegistrationDto) {
          Juego juego = new Juego(
@@ -30,6 +31,13 @@ public class GameServiceImpl implements GameService {
             gameRegistrationDto.getURL()
         );
         return gameRepository.save(juego);
+    }
+
+     */
+
+    @Override
+    public void guardar(Juego juego) {
+        gameRepository.save(juego);
     }
 
     @Override

@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/estado")
 public class StateController {
-
+/*
     @GetMapping
     public String stateActivo(){
         Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
         //String state = usuario.getPrincipal().
-        return "";
+        return "/biblioteca";
     }
-/*
+
     @GetMapping
     public String stateAusente(){
         return "";

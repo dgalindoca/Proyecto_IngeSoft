@@ -154,11 +154,11 @@
                 <div class="alert alert-info">Juego Agregado Correctamente</div>
             </div>
 
-            <h1 style="color: #FFF !Important">Agregar juego</h1>
+            <h1 style="color: #FFF !Important" th:text="${Titulo}"></h1>
 
-            <form th:action="@{/gameRegistration}" method="post" th:object="${game}">
+            <form th:action="@{/gameRegistration}" th:object="${juego}" method="post">
                 <div class="form-group">
-                    <!--<input type="hidden" th:field="*{id_Juego}"}>-->
+                    <input type="hidden" th:field="*{id_Juego}"}>
                     <label style="color: #FFF !Important" for="nombre_Juego" class="control-label">Nombre del juego</label>
                     <input id="nombre_Juego" class="form-control" th:field="*{nombre_Juego}" required autofocus="autofocus">
                 </div>
@@ -174,7 +174,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Agregar</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
                     <a href="/" th:href="@{/}">Regresar a la tienda</a>
                 </div>
             </form>
