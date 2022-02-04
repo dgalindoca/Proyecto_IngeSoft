@@ -72,6 +72,11 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Tienda</a></li>
                 <li class="nav-item"><a class="nav-link" sec:authorize="hasAuthority('Role_User')"th:href="@{/biblioteca}">Biblioteca</a></li>
             </ul>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a> </li>
+                </ul>
+            </div>
             <form class="d-flex">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" style="background: transparent; width: 200px; border: 1px solid #3C4043;" aria-expanded="false">
@@ -116,11 +121,6 @@
         <div class="col-md-1">
             <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
         </div>
-        </div >
-            <ul class="nav navbar-nav">
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a> </li>
-            </ul>
-        </div>
     </div>
 
 </div>
@@ -163,6 +163,7 @@
                             </a>
                         </td>
                     </tr>
+
                 </tbody>
             </table>
         </div>

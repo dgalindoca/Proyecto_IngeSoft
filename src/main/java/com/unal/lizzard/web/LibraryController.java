@@ -31,11 +31,15 @@ public class LibraryController {
     @GetMapping("/tienda")
     public String tienda(){return "/";}
 
-    @RequestMapping("/")
+    @GetMapping("/estado")
+    public String estado(){return "redirect:/estado";}
+
+    @GetMapping ("/biblioteca")
     public String listarJuegosC(Model model){
+        System.out.println("###Entra###");
         List<Juego> ListadoJuegosC = juegosCService.listarJuegosC();
         model.addAttribute("Titulo","Lista de Juegos");
         model.addAttribute("juegos", ListadoJuegosC);
-        return "/";
+        return "/biblioteca";
     }
 }

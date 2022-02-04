@@ -29,6 +29,7 @@ public class JuegosCServiceImpl implements JuegosCService{
     @Override
     public JuegosC comprar(Long id_Juego) {
         Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
+        usuario.getAuthorities();
         String id_Usuario = usuario.getName();
         JuegosC juego = new JuegosC(id_Juego,id_Usuario);
         return juegosCRepository.save(juego);

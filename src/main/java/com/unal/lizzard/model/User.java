@@ -18,6 +18,7 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String state;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -36,6 +37,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.state = "Activo";
     }
 
 
@@ -78,6 +80,14 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
 
