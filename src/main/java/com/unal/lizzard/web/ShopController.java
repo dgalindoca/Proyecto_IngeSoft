@@ -25,8 +25,10 @@ public class ShopController {
 
     @GetMapping("/")
     public String listarJuegos(Model model){
+        Juego juego = gameService.buscarPorId(juegosCService.Mas_comprado());
         List<Juego> ListadoJuegos = gameService.listarJuegos();
         model.addAttribute("Titulo","Lista de Juegos");
+        model.addAttribute("juegoMC", juego);
         model.addAttribute("juegos", ListadoJuegos);
         return "/tienda";
     }
@@ -47,12 +49,15 @@ public class ShopController {
         return "redirect:/gameRegistration";
     }
 
+    /*
     @GetMapping("/MC")
     public String MasComprado(Model model){
         Juego juego = gameService.buscarPorId(juegosCService.Mas_comprado());
         model.addAttribute("juego", juego);
         return "/tienda";
     }
+
+     */
 
     @GetMapping ("/buy/{id}")
     public String comprar(@PathVariable("id") Long id_Juego){
