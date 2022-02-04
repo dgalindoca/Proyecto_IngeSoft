@@ -44,9 +44,16 @@ public class ShopController {
         List<Juego> ListadoJuegos = gameService.listarJuegos();
         model.addAttribute("juego",juego);
         model.addAttribute("juegos", ListadoJuegos);
-
         return "redirect:/gameRegistration";
     }
+
+    @GetMapping("/MC")
+    public String MasComprado(Model model){
+        Juego juego = gameService.buscarPorId(juegosCService.Mas_comprado());
+        model.addAttribute("juego", juego);
+        return "/tienda";
+    }
+
     @GetMapping ("/buy/{id}")
     public String comprar(@PathVariable("id") Long id_Juego){
         juegosCService.comprar(id_Juego);

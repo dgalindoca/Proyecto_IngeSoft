@@ -126,9 +126,34 @@
 </div>
 <section>
     <div class="container">
+        <div class="col-md-3"><h2 style="color: #FFF !Important; margin: 5% 0px 3% 0px;">Juego mas comprado</h2></div>
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tienda</th>
+                <th scope="col">Url</th>
+                <th scope="col"sec:authorize="hasAuthority('Role_User')">Comprar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="jg:${juegos}">
+                <th style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_Juego}"></th>
+                <td style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_tienda}"></td>
+                <td style="color: #FFF !Important"; scope="row" th:text="${jg.URL}"></td>
+                <td>
+                    <a class="btn btn-success btn-sm"sec:authorize="hasAuthority('Role_User')" th:href="@{/buy/} + ${jg.id_Juego}"
+                       th:text="'Comprar'" title="Comprar">
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
         <div class="row">
             <div class="col-md-3"><h2 style="color: #FFF !Important; margin: 5% 0px 3% 0px;">Todos los Juegos</h2></div>
             <div class="col-md-2"><a sec:authorize="hasAuthority('Role_Admin')"th:href="@{/gameRegistration}" class="btn btn-primary mt-auto" href="#" style="padding-top: 5%">Añadir Juego</a></div>
+
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <table class="table">
@@ -166,6 +191,7 @@
 
                 </tbody>
             </table>
+
         </div>
     </div>
 </section>
