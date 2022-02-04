@@ -70,7 +70,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Tienda</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/biblioteca}">Biblioteca</a></li>
+                <li class="nav-item"><a class="nav-link" sec:authorize="hasAuthority('Role_User')"th:href="@{/biblioteca}">Biblioteca</a></li>
             </ul>
             <form class="d-flex">
                 <div class="dropdown">
@@ -120,7 +120,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3"><h2 style="color: #FFF !Important; margin: 5% 0px 3% 0px;">Todos los Juegos</h2></div>
-            <div class="col-md-2"><a th:href="@{/gameRegistration}" class="btn btn-primary mt-auto" href="#" style="padding-top: 5%">Añadir Juego</a></div>
+            <div class="col-md-2"><a sec:authorize="hasAuthority('Role_Admin')"th:href="@{/gameRegistration}" class="btn btn-primary mt-auto" href="#" style="padding-top: 5%">Añadir Juego</a></div>
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <table class="table">
@@ -129,9 +129,9 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Tienda</th>
                         <th scope="col">Url</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
-                        <th scope="col">Comprar</th>
+                        <th scope="col"sec:authorize="hasAuthority('Role_Admin')">Editar</th>
+                        <th scope="col"sec:authorize="hasAuthority('Role_Admin')">Eliminar</th>
+                        <th scope="col"sec:authorize="hasAuthority('Role_User')">Comprar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -140,17 +140,17 @@
                         <td style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_tienda}"></td>
                         <td style="color: #FFF !Important"; scope="row" th:text="${jg.URL}"></td>
                         <td>
-                            <a class="btn btn-primary btn-sm" th:href="@{/edit/} + ${jg.id_Juego}"
+                            <a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Role_Admin')"th:href="@{/edit/} + ${jg.id_Juego}"
                                th:text="'Editar'" title="Editar">
                             </a>
                         </td>
-                        <td>
-                            <a class="btn btn-danger btn-sm" th:href="@{/delete/} + ${jg.id_Juego}"
+                        <td >
+                             <a class="btn btn-danger btn-sm"sec:authorize="hasAuthority('Role_Admin')" th:href="@{/delete/} + ${jg.id_Juego}"
                                th:text="'Eliminar'" title="Eliminar">
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-success btn-sm" th:href="@{/buy/} + ${jg.id_Juego}"
+                            <a class="btn btn-success btn-sm"sec:authorize="hasAuthority('Role_User')" th:href="@{/buy/} + ${jg.id_Juego}"
                                th:text="'Comprar'" title="Comprar">
                             </a>
                         </td>

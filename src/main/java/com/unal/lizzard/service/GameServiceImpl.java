@@ -39,8 +39,8 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public void eliminar(Long id) {
-        //Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
-        //usuario.getName();
+        Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
+        usuario.getAuthorities();
         gameRepository.deleteById(id);
     }
 
