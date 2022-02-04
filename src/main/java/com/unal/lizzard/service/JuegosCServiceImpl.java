@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class JuegosCServiceImpl implements JuegosCService{
@@ -56,5 +58,28 @@ public class JuegosCServiceImpl implements JuegosCService{
     @Override
     public void eliminar(Long id){
 
+    }
+
+    @Override
+    public Long Mas_comprado(){
+        List<Long> aux = juegosCRepository.findByMas_comprado().stream().map(JuegosC::getId_Juego).collect(Collectors.toList());
+        HashMap<Long, Integer> mapa = new HashMap<>();
+        for (int x = 0; x < aux.size(); x++) {
+            Long numero = aux.get(x);
+            if (mapa.containsKey(numero)) {
+                mapa.put(numero, mapa.get(numero) + 1);
+            } else {
+                mapa.put(numero, 1);
+            }
+        }
+        int mayor = 0;
+        Long moda = null;
+        for (HashMap.Entry<Long, Integer> entry : mapa.entrySet()) {
+            if (entry.getValue() > mayor) {
+                mayor = entry.getValue();
+                moda = entry.getKey();
+            }
+        }
+        return moda;
     }
 }

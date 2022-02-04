@@ -11,4 +11,5 @@ public interface JuegosCService {
     public void eliminar(Long id);
     public Juego buscarPorId(Long id);
     public List<Juego> listarJuegosC();
+    public Long Mas_comprado();
 }

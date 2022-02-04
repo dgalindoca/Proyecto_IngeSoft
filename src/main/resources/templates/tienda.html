@@ -72,25 +72,25 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Tienda</a></li>
                 <li class="nav-item"><a class="nav-link" sec:authorize="hasAuthority('Role_User')"th:href="@{/biblioteca}">Biblioteca</a></li>
             </ul>
-            </div>
-                <ul class="nav navbar-nav">
-                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a> </li>
-                </ul>
-            </div>
-            <form class="d-flex">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" style="background: transparent; width: 200px; border: 1px solid #3C4043;" aria-expanded="false">
-                        <img style="width:20%;" src="https://tiendajuegosdaniel.000webhostapp.com/img/Avatar.png" alt="Avatar del usuario">
-                        Admin
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </form>
         </div>
+        <ul class="nav navbar-nav">
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a> </li>
+        </ul>
+    </div>
+    <form class="d-flex">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" style="background: transparent; width: 200px; border: 1px solid #3C4043;" aria-expanded="false">
+                <img style="width:20%;" src="https://tiendajuegosdaniel.000webhostapp.com/img/Avatar.png" alt="Avatar del usuario">
+                Admin
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+    </form>
+    </div>
     </div>
 
 </nav>
@@ -126,46 +126,72 @@
 </div>
 <section>
     <div class="container">
+        <div class="col-md-3"><h2 style="color: #FFF !Important; margin: 5% 0px 3% 0px;">Juego mas comprado</h2></div>
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tienda</th>
+                <th scope="col">Url</th>
+                <th scope="col"sec:authorize="hasAuthority('Role_User')">Comprar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="jmc:${juegoMC}">
+                <th style="color: #FFF !Important"; scope="row" th:text="${jmc.nombre_Juego}"></th>
+                <td style="color: #FFF !Important"; scope="row" th:text="${jmc.nombre_tienda}"></td>
+                <td style="color: #FFF !Important"; scope="row" th:text="${jmc.URL}"></td>
+                <td>
+                    <a class="btn btn-success btn-sm"sec:authorize="hasAuthority('Role_User')" th:href="@{/buy/} + ${jmc.id_Juego}"
+                       th:text="'Comprar'" title="Comprar">
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
         <div class="row">
             <div class="col-md-3"><h2 style="color: #FFF !Important; margin: 5% 0px 3% 0px;">Todos los Juegos</h2></div>
             <div class="col-md-2"><a sec:authorize="hasAuthority('Role_Admin')"th:href="@{/gameRegistration}" class="btn btn-primary mt-auto" href="#" style="padding-top: 5%">Añadir Juego</a></div>
+
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <table class="table">
                 <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Tienda</th>
-                        <th scope="col">Url</th>
-                        <th scope="col"sec:authorize="hasAuthority('Role_Admin')">Editar</th>
-                        <th scope="col"sec:authorize="hasAuthority('Role_Admin')">Eliminar</th>
-                        <th scope="col"sec:authorize="hasAuthority('Role_User')">Comprar</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tienda</th>
+                    <th scope="col">Url</th>
+                    <th scope="col"sec:authorize="hasAuthority('Role_Admin')">Editar</th>
+                    <th scope="col"sec:authorize="hasAuthority('Role_Admin')">Eliminar</th>
+                    <th scope="col"sec:authorize="hasAuthority('Role_User')">Comprar</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="jg:${juegos}">
-                        <th style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_Juego}"></th>
-                        <td style="color: #FFF !Important"; scope="row" th:text="${jg.nombre_tienda}"></td>
-                        <td style="color: #FFF !Important"; scope="row" th:text="${jg.URL}"></td>
-                        <td>
-                            <a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Role_Admin')"th:href="@{/edit/} + ${jg.id_Juego}"
-                               th:text="'Editar'" title="Editar">
-                            </a>
-                        </td>
-                        <td >
-                             <a class="btn btn-danger btn-sm"sec:authorize="hasAuthority('Role_Admin')" th:href="@{/delete/} + ${jg.id_Juego}"
-                               th:text="'Eliminar'" title="Eliminar">
-                            </a>
-                        </td>
-                        <td>
-                            <a class="btn btn-success btn-sm"sec:authorize="hasAuthority('Role_User')" th:href="@{/buy/} + ${jg.id_Juego}"
-                               th:text="'Comprar'" title="Comprar">
-                            </a>
-                        </td>
-                    </tr>
+                <tr th:each="ju:${juegos}">
+                    <th style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_Juego}"></th>
+                    <td style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_tienda}"></td>
+                    <td style="color: #FFF !Important"; scope="row" th:text="${ju.URL}"></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Role_Admin')"th:href="@{/edit/} + ${ju.id_Juego}"
+                           th:text="'Editar'" title="Editar">
+                        </a>
+                    </td>
+                    <td >
+                        <a class="btn btn-danger btn-sm"sec:authorize="hasAuthority('Role_Admin')" th:href="@{/delete/} + ${ju.id_Juego}"
+                           th:text="'Eliminar'" title="Eliminar">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-success btn-sm"sec:authorize="hasAuthority('Role_User')" th:href="@{/buy/} + ${ju.id_Juego}"
+                           th:text="'Comprar'" title="Comprar">
+                        </a>
+                    </td>
+                </tr>
 
                 </tbody>
             </table>
+
         </div>
     </div>
 </section>
