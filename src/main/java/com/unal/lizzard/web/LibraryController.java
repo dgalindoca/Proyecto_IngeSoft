@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +35,12 @@ public class LibraryController {
     @GetMapping("/estado")
     public String estado(){return "/estado";}
 
-    @GetMapping ("/biblioteca")
+    @GetMapping()// ("/biblioteca")
     public String listarJuegosC(Model model){
-        System.out.println("###Entra###");
         List<Juego> ListadoJuegosC = juegosCService.listarJuegosC();
         model.addAttribute("Titulo","Lista de Juegos");
         model.addAttribute("juegos", ListadoJuegosC);
-        return "/biblioteca";
+        return "biblioteca";
     }
+
 }

@@ -87,28 +87,10 @@
     </div>
 </nav>
 <!-- Section-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-11">
-
-            <input class="form-control" list="games" id="exampleDataList" placeholder="Type to search...">
-            <datalist id="games">
-                <option value="Valorant">
-                <option value="God of War Ragnarok">
-                <option value="Gears of War">
-                <option value="Fortnite">
-                <option value="League of Legends">
-            </datalist>
-        </div>
-        <div class="col-md-1">
-            <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
-        </div>
-    </div>
-</div>
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-3"><h2 style="color: #FFF !Important; margin: 5% 0px 3% 0px;">Todos los Juegos</h2></div>
+            <div class="col-md-3"><h2 style="color: #FFF !Important; margin: 5% 0px 3% 0px;">Todos tus Juegos</h2></div>
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <table class="table">
@@ -126,7 +108,7 @@
                     <td style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_tienda}"></td>
                     <td style="color: #FFF !Important"; scope="row" th:text="${ju.URL}"></td>
                     <td>
-                        <a class="btn btn-danger btn-sm"  th:href="@{/delete/} + ${jg.id_Juego}"
+                        <a class="btn btn-danger btn-sm"  th:href="@{/delete/} + ${ju.id_Juego}"
                            th:text="'Eliminar'" title="Eliminar">
                         </a>
                     </td>
