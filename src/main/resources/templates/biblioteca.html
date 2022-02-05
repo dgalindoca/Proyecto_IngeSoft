@@ -102,9 +102,9 @@
                     <th scope="col">Eliminar</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr th:each="ju:${juegos}">
-                    <th style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_Juego}"></th>
+                <tbody th:if="${juegos != null}" >
+                <tr th:each="ju : ${juegos}">
+                    <td style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_Juego}"></td>
                     <td style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_tienda}"></td>
                     <td style="color: #FFF !Important"; scope="row" th:text="${ju.URL}"></td>
                     <td>
