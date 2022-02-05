@@ -81,8 +81,9 @@
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" style="background: transparent; width: 200px; border: 1px solid #3C4043;" aria-expanded="false">
                 <img style="width:20%;" src="https://tiendajuegosdaniel.000webhostapp.com/img/Avatar.png" alt="Avatar del usuario">
-                <a >Gamer</a>
-                <a >Admin</a>
+
+                <th scope="col"sec:authorize="hasAuthority('Role_User')">Gamer</th>
+                <th scope="col"sec:authorize="hasAuthority('Role_Admin')">Admin</th>
             </button>
         </div>
     </form>
