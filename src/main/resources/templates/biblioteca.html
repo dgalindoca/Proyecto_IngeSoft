@@ -102,13 +102,13 @@
                     <th scope="col">Eliminar</th>
                 </tr>
                 </thead>
-                <tbody th:if="${juegos != null}" >
-                <tr th:each="ju : ${juegos}">
-                    <td style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_Juego}"></td>
+                <tbody th:if="${juegosC != null}" >
+                <tr th:each="ju : ${juegosC}">
+                    <td style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_juego}"></td>
                     <td style="color: #FFF !Important"; scope="row" th:text="${ju.nombre_tienda}"></td>
                     <td style="color: #FFF !Important"; scope="row" th:text="${ju.URL}"></td>
                     <td>
-                        <a class="btn btn-danger btn-sm"  th:href="@{/delete/} + ${ju.id_Juego}"
+                        <a class="btn btn-danger btn-sm"  th:href="@{/deleteC/} + ${ju.id_JuegosC}"
                            th:text="'Eliminar'" title="Eliminar">
                         </a>
                     </td>

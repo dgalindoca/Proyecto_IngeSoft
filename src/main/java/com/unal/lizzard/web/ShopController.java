@@ -35,12 +35,6 @@ public class ShopController {
        System.out.println("Registro Eliminado con Exito!");
        return "redirect:/";
     }
-    /*
-    @ResponseBody
-    @GetMapping("/biblioteca")
-    public String biblioteca(){return "/biblioteca";}
-
-     */
 
     @GetMapping("/edit/{id_Juego}")
     public String editar(@PathVariable("id_Juego")Long id_Juego, Model model){
@@ -55,16 +49,6 @@ public class ShopController {
         return "/gameRegistration";
 
     }
-
-    /*
-    @GetMapping("/MC")
-    public String MasComprado(Model model){
-        Juego juego = gameService.buscarPorId(juegosCService.Mas_comprado());
-        model.addAttribute("juego", juego);
-        return "/tienda";
-    }
-
-     */
 
     @GetMapping ("/buy/{id}")
     public String comprar(@PathVariable("id") Long id_Juego){
