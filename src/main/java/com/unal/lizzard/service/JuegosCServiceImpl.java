@@ -1,5 +1,6 @@
 package com.unal.lizzard.service;
 
+import com.unal.lizzard.model.Compra;
 import com.unal.lizzard.model.Juego;
 import com.unal.lizzard.model.JuegosC;
 import com.unal.lizzard.repository.GameRepository;
@@ -40,24 +41,30 @@ public class JuegosCServiceImpl implements JuegosCService{
     public Juego buscarPorId(Long id){
         return gameRepository.findById(id).orElse(null);
     }
+
     @Override
-    public List<Juego> listarJuegosC(){
+    public List<Compra> listarJuegosC(){
         ArrayList<JuegosC> juegosComp = (ArrayList<JuegosC>) juegosCRepository.findAll();
-        List<Juego> aux = new ArrayList<>();
+        List<Compra> aux = new ArrayList<>();
         Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
         String id_Usuario = usuario.getName();
 
         for(int i = 0; i < juegosComp.size(); i++){
             if (juegosComp.get(i).getId_Usuario().equals(id_Usuario)){
-                aux.add(buscarPorId(juegosComp.get(i).getId_Juego()));
+                JuegosC auxJC = juegosComp.get(i);
+                Juego auxJ = buscarPorId(auxJC.getId_Juego());
+                Compra auxC = new Compra(auxJC.getId_JuegosC(), auxJ.getId_Juego(), auxJ.getNombre_Juego(), auxJ.getNombre_tienda(), auxJ.getURL());
+                aux.add(auxC);
             }
         }
-        System.out.println(aux);
         return aux;
     }
-    @Override
-    public void eliminar(Long id){
 
+    @Override
+    public void eliminar(Long id) {
+        Authentication usuario = SecurityContextHolder.getContext().getAuthentication();
+        usuario.getAuthorities();
+        juegosCRepository.deleteById(id);
     }
 
     @Override
